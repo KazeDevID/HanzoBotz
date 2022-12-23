@@ -1,17 +1,27 @@
 {
   "name": "HANZO-MD",
   "version": "1.0.0",
-  "description": "Yoo",
+  "description": "Yoo~",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
 	"start": "node index.js"
   },
-   "keywords": [
-     "HanzoBotz"
+  "keywords": [
+    "HanzoBotz"
   ],
-  "author": "KazeDevID",
-  "license": "MIT",
+  "homepage": "https://github.com/KazeDevID/HanzoBotz",
+  "author": {
+    "name": "KazeDevID"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KazeDevID/HanzoBotz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KazeDevID/HanzoBotz/issues"
+  },
+  "license": "ISC",
   "dependencies": {
   "@adiwajshing/baileys": "^4.4.0",
   "@adiwajshing/keyed-db": "^0.2.4",
@@ -49,15 +59,7 @@
   "spinnies": "^0.4.3",
   "steno": "^1.0.0",
   "rimraf": "^1.0.0",
+  "colors": "^1.4.0",
   "yt-search": "^2.10.2"
- },
- "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KazeDevID/HanzoBotz.git"
-  },
-  "bugs": {
-    "url": "https://github.com/KazeDevID/HanzoBotz/issues"
-  },
-  "homepage": "https://github.com/KazeDevID/HanzoBotz#readme"
+ }
 }
