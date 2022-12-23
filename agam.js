@@ -1,10 +1,6 @@
 require('./config.js')
 
-/**
-* THANKS TO...
-* Adiwajshing (Created Baileys)
-* kaze Coding (My Self)
-*/
+
 
 // Module
 const {
@@ -41,10 +37,10 @@ const hariini = timeZone.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
 const barat = timeZone.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = timeZone.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = timeZone.tz('Asia/Jayapura').format('HH:mm:ss')
-const youtube = ('https://youtube.com/c/kazeCoding')
+const youtube = ('https://youtube.com/@KazeDevID')
 const wa = `0@s.whatsapp.net`
 const owner = global.owner + '@s.whatsapp.net'
-const nyoutube = ('kaze') 
+const nyoutube = ('KazeDevID') 
 var time = timeZone.tz('Asia/Jakarta')
 .format('HH:mm:ss')
 
