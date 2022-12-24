@@ -1,6 +1,10 @@
 require('./config.js')
 
-
+/**
+* THANKS TO...
+* Adiwajshing (Created Baileys)
+* kaze Coding (My Self)
+*/
 
 // Module
 const {
@@ -37,10 +41,10 @@ const hariini = timeZone.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
 const barat = timeZone.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = timeZone.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = timeZone.tz('Asia/Jayapura').format('HH:mm:ss')
-const youtube = ('https://youtube.com/@KazeDevID')
+const youtube = ('https://youtube.com/c/kazeCoding')
 const wa = `0@s.whatsapp.net`
 const owner = global.owner + '@s.whatsapp.net'
-const nyoutube = ('KazeDevID') 
+const nyoutube = ('kaze') 
 var time = timeZone.tz('Asia/Jakarta')
 .format('HH:mm:ss')
 
@@ -92,12 +96,12 @@ const groupMetadata = m.isGroup ? await kaze.groupMetadata(m.chat).catch(e => {}
 const groupName = m.isGroup ? groupMetadata.subject : ''
 const participants = m.isGroup ? await groupMetadata.participants : ''
 const groupAdmins = m.isGroup ? await getGroupAdmins(participants) : ''
-    	const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
-    	const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
-    	const isPremium = isOwner || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
-    	
-    	// Limit
-    	try {
+	const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
+	const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
+	const isPremium = isOwner || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
+	
+	// Limit
+	try {
 let isNumber = x => typeof x === 'number' && !isNaN(x)
 let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
 let user = global.db.data.users[m.sender]
@@ -113,7 +117,7 @@ afkTime: -1,
 afkReason: '',
 limit: limitUser,
 }
-    
+
 let chats = global.db.data.chats[m.chat]
 if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
 if (chats) {
@@ -136,9 +140,9 @@ scheduled: true,
 timezone: "Asia/Jakarta"
 })
 
-	    let setting = global.db.data.settings[botNumber]
+	let setting = global.db.data.settings[botNumber]
 if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
-	    if (setting) {
+	if (setting) {
 if (!isNumber(setting.status)) setting.status = 0
 if (!('autobio' in setting)) setting.autobio = true
 if (!('templateImage' in setting)) setting.templateImage = true
@@ -146,7 +150,7 @@ if (!('templateVideo' in setting)) setting.templateVideo = false
 if (!('templateGif' in setting)) setting.templateGif = false
 if (!('templateMsg' in setting)) setting.templateMsg = false
 if (!('templateLocation' in setting)) setting.templateLocation = false
-	    } else global.db.data.settings[botNumber] = {
+	} else global.db.data.settings[botNumber] = {
 status: 0,
 autobio: true,
 templateImage: true,
@@ -154,8 +158,8 @@ templateVideo: false,
 templateGif: false,
 templateMsg: false,
 templateLocation: false,
-	    }
-	    
+	}
+	
 } catch (err) {
 console.error(err)
 }
@@ -186,12 +190,12 @@ var sayyingTime = 'Selamat Tengah Malam 🌌'
 }
 	// auto set bio
 	if (db.data.settings[botNumber].autobio) {
-	    let setting = global.db.data.settings[botNumber]
-	    if (new Date() * 1 - setting.status > 1000) {
+	let setting = global.db.data.settings[botNumber]
+	if (new Date() * 1 - setting.status > 1000) {
 let uptime = await runtime(process.uptime())
 await kaze.setStatus(`${global.namabot} | Runtime : ${runtime(process.uptime())}`)
 setting.status = new Date() * 1
-	    }
+	}
 	}
 	
 	// Respon Cmd with media
@@ -226,7 +230,7 @@ console.log(chalk.black(chalk.bgGreen('[ Chat ]')), chalk.black(chalk.blueBright
 }
 
 // Hit
-        global.hit = {}
+global.hit = {}
 		if (isCmd) {
 		data = await fetchJson('https://api.countapi.xyz/hit/nonton-gratis.netlify.app/visitor')
 		totalcmd = `${data.value}`
@@ -254,7 +258,7 @@ const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat
 const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: global.wm,jpegThumbnail: await reSize(thumb, 100, 100)}}}
 const floc2 = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "liveLocationMessage": { "title": global.wm,"h": `Hmm`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': global.wm, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;ytname,;;;\nFN:ytname\nitem1.TEL;waid=6282217590187:6282217590187\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await reSize(thumb, 100, 100), thumbnail: await reSize(thumb, 100, 100),sendEphemeral: true}}}
-	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": global.wm,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": await reSize(thumb, 100, 100),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
+	const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": global.wm,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": await reSize(thumb, 100, 100),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
  
 function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
@@ -332,17 +336,17 @@ let tag = `
 @Adiwajshing (Baileys)
 @KazeDevID (base)
 `
-      	  let buttons = [
-    {buttonId: `rules`, buttonText: {displayText: 'Rules'}, type: 1},
-    {buttonId: `donasi`, buttonText: {displayText: 'Donasi'}, type: 1},
-    {buttonId: `owner`, buttonText: {displayText: 'Owner'}, type: 1}
+  	  let buttons = [
+{buttonId: `rules`, buttonText: {displayText: 'Rules'}, type: 1},
+{buttonId: `donasi`, buttonText: {displayText: 'Donasi'}, type: 1},
+{buttonId: `owner`, buttonText: {displayText: 'Owner'}, type: 1}
 ]
 let buttonMessage = {
-    image: { url: 'https://i.ibb.co/jZc69j4/kaze.jpg' },
-    caption: `${tqto}`,
-    footer: `${tag}\n\n${global.wm}`,
-    buttons: buttons,
-    headerType: 4
+image: { url: 'https://i.ibb.co/jZc69j4/kaze.jpg' },
+caption: `${tqto}`,
+footer: `${tag}\n\n${global.wm}`,
+buttons: buttons,
+headerType: 4
 }
 kaze.sendMessage(m.chat, buttonMessage, { quoted: ftroli })
 }
@@ -400,19 +404,23 @@ let menu = `
 ┣╌ ⟪ *OWNER CMD* ⟫
 ┃▷ ${prefix}self 👑
 ┃▷ ${prefix}public 👑
+┃
+┣╌ ⟪ *CONVERT CMD* ⟫
+┃▷ ${prefix}sticker [image]
+┃▷ ${prefix}stickerwm [image] <teks1|teks2>
 ╰──────────────⊱
 `
-      	  let buttons = [
-    {buttonId: `rules`, buttonText: {displayText: 'Rules'}, type: 1},
-    {buttonId: `donasi`, buttonText: {displayText: 'Donasi'}, type: 1},
-    {buttonId: `owner`, buttonText: {displayText: 'Owner'}, type: 1}
+  	  let buttons = [
+{buttonId: `rules`, buttonText: {displayText: 'Rules'}, type: 1},
+{buttonId: `donasi`, buttonText: {displayText: 'Donasi'}, type: 1},
+{buttonId: `owner`, buttonText: {displayText: 'Owner'}, type: 1}
 ]
 let buttonMessage = {
-    image: fs.readFileSync(`./media/img/kaze.png`),
-    caption: `${menu}`,
-    footer: wm,
-    buttons: buttons,
-    headerType: 4
+image: fs.readFileSync(`./media/img/kaze.png`),
+caption: `${menu}`,
+footer: wm,
+buttons: buttons,
+headerType: 4
 }
 kaze.sendMessage(m.chat, buttonMessage, { quoted: ftroli })
 }
@@ -431,22 +439,22 @@ break
 case 'ping': {
 const used = process.memoryUsage()
 const cpus = os.cpus().map(cpu => {
-    cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
+cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
 return cpu
 })
 const cpu = cpus.reduce((last, cpu, _, { length }) => {
-    last.total += cpu.total
-    last.speed += cpu.speed / length
-    last.times.user += cpu.times.user
-    last.times.nice += cpu.times.nice
-    last.times.sys += cpu.times.sys
-    last.times.idle += cpu.times.idle
-    last.times.irq += cpu.times.irq
-    return last
+last.total += cpu.total
+last.speed += cpu.speed / length
+last.times.user += cpu.times.user
+last.times.nice += cpu.times.nice
+last.times.sys += cpu.times.sys
+last.times.idle += cpu.times.idle
+last.times.irq += cpu.times.irq
+return last
 }, {
-    speed: 0,
-    total: 0,
-    times: {
+speed: 0,
+total: 0,
+times: {
 user: 0,
 nice: 0,
 sys: 0,
@@ -550,23 +558,23 @@ Rules, Serta Para Constributor
 Yang Sudah Membantu Dalam
 Pembuatan Bot Ini
 Ini`
-      	  let buttons = [
-    {buttonId: `menu`, buttonText: {displayText: 'Menu'}, type: 1},
-    {buttonId: `donasi`, buttonText: {displayText: 'Donasi'}, type: 1},
-    {buttonId: `tqto`, buttonText: {displayText: 'Thanks To'}, type: 1}
+  	  let buttons = [
+{buttonId: `menu`, buttonText: {displayText: 'Menu'}, type: 1},
+{buttonId: `donasi`, buttonText: {displayText: 'Donasi'}, type: 1},
+{buttonId: `tqto`, buttonText: {displayText: 'Thanks To'}, type: 1}
 ]
 let buttonMessage = {
-    image: { url: 'https://i.ibb.co/jZc69j4/kaze.jpg' },
-    caption: `${rules}`,
-    footer: `${rulesnya}\n\n${global.wm}`,
-    buttons: buttons,
-    headerType: 4
+image: { url: 'https://i.ibb.co/jZc69j4/kaze.jpg' },
+caption: `${rules}`,
+footer: `${rulesnya}\n\n${global.wm}`,
+buttons: buttons,
+headerType: 4
 }
 kaze.sendMessage(m.chat, buttonMessage, { quoted: ftroli })
 }
 break
    
-       case 'donasi': case 'donate': {
+   case 'donasi': case 'donate': {
 let payment = `
 *Hai Kak ${pushname}, ${sayyingTime}*`
 let donate = `
@@ -577,16 +585,16 @@ Pulsa: 082217590187
 Dana: 082217590187
 Gopay: 082217590187`
 let buttons = [
-    {buttonId: `rules`, buttonText: {displayText: 'Rules'}, type: 1},
-    {buttonId: `menu`, buttonText: {displayText: 'Menu'}, type: 1},
-    {buttonId: `owner`, buttonText: {displayText: 'Owner'}, type: 1}
+{buttonId: `rules`, buttonText: {displayText: 'Rules'}, type: 1},
+{buttonId: `menu`, buttonText: {displayText: 'Menu'}, type: 1},
+{buttonId: `owner`, buttonText: {displayText: 'Owner'}, type: 1}
 ]
 let buttonMessage = {
-    image: { url: 'https://i.ibb.co/jZc69j4/kaze.jpg' },
-    caption: `${payment}`,
-    footer: `${donate}\n\n${global.wm}`,
-    buttons: buttons,
-    headerType: 4
+image: { url: 'https://i.ibb.co/jZc69j4/kaze.jpg' },
+caption: `${payment}`,
+footer: `${donate}\n\n${global.wm}`,
+buttons: buttons,
+headerType: 4
 }
 kaze.sendMessage(m.chat, buttonMessage, { quoted: ftroli })
 }
@@ -642,6 +650,51 @@ break
 
 
 
+// Convert
+case 'sticker': 
+case 's': 
+case 'stickergif': 
+case 'sgif': {
+  if (/image/.test(mime)) {
+  m.reply(mess.wait)
+let media = await kaze.downloadMediaMessage(qmsg)
+let encmedia = await kaze.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+await fs.unlinkSync(encmedia)
+} else if (/video/.test(mime)) {
+m.reply(mess.wait)
+if (qmsg.seconds > 11) return m.reply('Maksimal 10 detik!')
+let media = await kaze.downloadMediaMessage(qmsg)
+let encmedia = await kaze.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+await fs.unlinkSync(encmedia)
+} else {
+m.reply(`Kirim/reply gambar/video/gif dengan caption ${prefix + command}\nDurasi Video/Gif 1-9 Detik`)
+}
+}
+break
+
+case 'stickerwm': 
+case 'swm': 
+case 'stickergifwm': 
+case 'sgifwm': {
+let [teks1, teks2] = text.split`|`
+if (!teks1) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
+if (!teks2) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
+	m.reply(mess.wait)
+if (/image/.test(mime)) {
+let media = await kaze.downloadMediaMessage(qmsg)
+let encmedia = await kaze.sendImageAsSticker(m.chat, media, m, { packname: teks1, author: teks2 })
+await fs.unlinkSync(encmedia)
+} else if (/video/.test(mime)) {
+if ((quoted.msg || quoted).seconds > 11) return m.reply('Maksimal 10 detik!')
+let media = await kaze.downloadMediaMessage(qmsg)
+let encmedia = await kaze.sendVideoAsSticker(m.chat, media, m, { packname: teks1, author: teks2 })
+await fs.unlinkSync(encmedia)
+} else {
+throw `Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`
+}
+}
+break
+
 
 
 
@@ -649,54 +702,54 @@ break
 // End Cmd
 default:
 if (budy.startsWith('=>')) {
-    if (!isOwner) return m.reply(mess.owner)
-    function Return(sul) {
+if (!isOwner) return m.reply(mess.owner)
+function Return(sul) {
 sat = JSON.stringify(sul, null, 2)
 bang = util.format(sat)
 if (sat == undefined) {
 bang = util.format(sul)
 }
 return m.reply(bang)
-    }
-    try {
+}
+try {
 m.reply(util.format(eval(`(async () => { return ${budy.slice(3)} })()`)))
-    } catch (e) {
+} catch (e) {
 m.reply(String(e))
-    }
+}
 }
 
 if (budy.startsWith('>')) {
-    if (!isOwner) return m.reply(mess.owner)
-    try {
+if (!isOwner) return m.reply(mess.owner)
+try {
 let evaled = await eval(budy.slice(2))
 if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
 await m.reply(evaled)
-    } catch (err) {
+} catch (err) {
 await m.reply(String(err))
-    }
+}
 }
 
 if (budy.startsWith('$')) {
-    if (!isOwner) return m.reply(mess.owner)
-    exec(budy.slice(2), (err, stdout) => {
+if (!isOwner) return m.reply(mess.owner)
+exec(budy.slice(2), (err, stdout) => {
 if (err) return m.reply(`${err}`)
 if (stdout) return m.reply(stdout)
-    })
+})
 }
 
 if (isCmd && budy.toLowerCase() != undefined) {
-    if (m.chat.endsWith('broadcast')) return
-    if (m.isBaileys) return
-    let msgs = global.db.data.database
-    if (!(budy.toLowerCase() in msgs)) return
-    kaze.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
+if (m.chat.endsWith('broadcast')) return
+if (m.isBaileys) return
+let msgs = global.db.data.database
+if (!(budy.toLowerCase() in msgs)) return
+kaze.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 }
 }
 
 
-    } catch (err) {
+} catch (err) {
 m.reply(util.format(err))
-    }
+}
 }
 
 let file = require.resolve(__filename)
