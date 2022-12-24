@@ -1,11 +1,5 @@
 require('./config.js')
 
-/**
-* THANKS TO...
-* Adiwajshing (Created Baileys)
-* kaze Coding (My Self)
-*/
-
 // Module
 const {
 	BufferJSON,
@@ -41,10 +35,10 @@ const hariini = timeZone.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
 const barat = timeZone.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = timeZone.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = timeZone.tz('Asia/Jayapura').format('HH:mm:ss')
-const youtube = ('https://youtube.com/c/kazeCoding')
+const youtube = ('https://youtube.com/@KazeDevID')
 const wa = `0@s.whatsapp.net`
 const owner = global.owner + '@s.whatsapp.net'
-const nyoutube = ('kaze') 
+const nyoutube = ('KAZEDEVID') 
 var time = timeZone.tz('Asia/Jakarta')
 .format('HH:mm:ss')
 
@@ -401,6 +395,10 @@ let menu = `
 ┃▷ ${prefix}ceklimit
 ┃▷ ${prefix}hit
 ┃
+┣╌ ⟪ *JADIBOT CMD* ⟫
+┃▷ ${prefix}jadibot
+┃▷ ${prefix}listjadibot
+┃┃
 ┣╌ ⟪ *OWNER CMD* ⟫
 ┃▷ ${prefix}self 👑
 ┃▷ ${prefix}public 👑
@@ -645,6 +643,29 @@ case 'public': {
 if (!isOwner) throw mess.owner
 kaze.public = true
 m.reply('Public Mode Activate')
+}
+break
+
+
+
+// JadiBot
+case 'jadibot': {
+jadibot(kaze, ftroli, from)
+}
+break
+
+case 'listjadibot': 
+try {
+let user = [... new Set([...global.conns.filter(kaze => kaze.user).map(kaze => kaze.user)])]
+te = "*List Jadibot*\n\n"
+for (let i of user){
+y = await kaze.decodeJid(i.id)
+te += " × User : @" + y.split("@")[0] + "\n"
+te += " × Name : " + i.name + "\n\n"
+}
+kaze.sendMessage(from,{text:te,mentions: [y], },{quoted:m})
+} catch (err) {
+m.reply(`Belum Ada User Yang Jadibot`)
 }
 break
 
