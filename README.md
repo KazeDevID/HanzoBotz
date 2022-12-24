@@ -1,6 +1,8 @@
 ## HanzoBotz
 > Note : Base ini di update secara berkala dan buat yang mau download versi terbaru atau lama bisa cek di branch, dan di mohon untuk tidak menghapus thanks to yang di sc ini:)
-##Instalasi
+
+## Instalasi
+
 ### Untuk termux
 
 ```
